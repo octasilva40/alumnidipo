@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Alumni Kelas XII TJKT 2 | Website Resmi</title>
+<title>Alumni Kelas ABC | Website Resmi</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
@@ -647,11 +647,11 @@
 <!-- Login Modal (shown by default) -->
 <div id="loginModal" class="login-modal">
   <div class="login-container">
-    <h2>Login Alumni</h2>
-    <input type="email" id="loginEmail" placeholder="Email" />
+    <h2>Login Admin</h2>
+    <input type="text" id="loginUsername" placeholder="Username" />
     <input type="password" id="loginPassword" placeholder="Password" />
     <button id="loginBtn">Masuk</button>
-    <p style="margin-top: 15px; font-size: 0.9rem;">Hanya untuk alumni terdaftar</p>
+    <p style="margin-top: 15px; font-size: 0.9rem;">Untuk melihat sebagai tamu, kosongkan kedua field dan klik Masuk</p>
   </div>
 </div>
 
@@ -674,8 +674,8 @@
     <h2>Selamat Datang Alumni XII TJKT 2</h2>
     <div id="heroSlideshow" aria-label="Slideshow foto kenangan alumni">
       <img src="IMG_9966.jpg" alt="Foto alumni bersama 1" />
-      <img src="foto_alumni_1.jpg" alt="Foto alumni bersama 2" />
-      <img src="foto_alumni_3.jpg" alt="Foto alumni bersama 3" />
+      <img src="foto alumni 1.jpg" alt="Foto alumni bersama 2" />
+      <img src="foto alumni 3.jpg" alt="Foto alumni bersama 3" />
     </div>
     <h3 id="videoGalleryTitle">Galeri Video Kegiatan</h3>
     <div class="video-gallery" aria-label="Video reuni dan kegiatan">
@@ -684,12 +684,31 @@
     </div>
   </section>
 
+  <!--DATA PROFILE ALUMNI-->
   <section id="alumni" role="tabpanel" aria-labelledby="tabAlumni" tabindex="0">
-    <h2>Data Profil Alumni</h2>
-    <div id="alumniProfiles" aria-live="polite" aria-label="Daftar profil alumni">
-      <!-- Data akan dimuat dari Firebase -->
-      <p style="text-align: center; color: #555;">Memuat data alumni...</p>
-    </div>
+      <h2>Data Profil Alumni</h2>
+      <div id="alumniProfiles" aria-live="polite" aria-label="Daftar profil alumni">
+        <!-- 32 empty profile cards -->
+        <div class="profile-card">
+          <img src="https://i.pravatar.cc/120?u=1" alt="Foto profil alumni" />
+          <h3>Nama Alumni</h3>
+          <p><strong>Email:</strong> email@example.com</p>
+          <p><strong>Telepon:</strong> 08123456789</p>
+        </div>
+        <div class="profile-card">
+          <img src="https://i.pravatar.cc/120?u=1" alt="Foto profil alumni" />
+          <h3>Nama Alumni</h3>
+          <p><strong>Email:</strong> email@example.com</p>
+          <p><strong>Telepon:</strong> 08123456789</p>
+        </div>
+        <div class="profile-card">
+          <img src="https://i.pravatar.cc/120?u=1" alt="Foto profil alumni" />
+          <h3>Nama Alumni</h3>
+          <p><strong>Email:</strong> email@example.com</p>
+          <p><strong>Telepon:</strong> 08123456789</p>
+        </div>
+        <!-- Add 31 more cards as before -->
+      </div>
   </section>
 
   <section id="reunion" role="tabpanel" aria-labelledby="tabReunion" tabindex="0">
@@ -698,15 +717,13 @@
       <textarea id="reunionTextarea" placeholder="Tulis informasi reuni kelas disini..."></textarea>
       <button id="saveReunionBtn" aria-label="Simpan informasi reuni">Simpan</button>
     </div>
-    <div id="reunionDisplay" aria-live="polite" role="region" aria-label="Informasi reuni terkini">
-      Memuat informasi reuni...
-    </div>
+    <div id="reunionDisplay" aria-live="polite" role="region" aria-label="Informasi reuni terkini"></div>
   </section>
 
   <section id="gallery" role="tabpanel" aria-labelledby="tabGallery" tabindex="0">
     <h2>Galeri Foto & Video</h2>
     <div id="galleryContent" aria-live="polite" aria-label="Galeri foto dan video">
-      <p style="text-align: center; color: #555;">Memuat galeri...</p>
+      <!-- gallery loaded here -->
     </div>
   </section>
 
@@ -722,7 +739,7 @@
     <h2>Forum Chat Grup</h2>
     <div id="forumChat" aria-live="polite" aria-label="Pesan forum chat">
       <div id="messages" tabindex="0" aria-label="Daftar pesan chat">
-        <p style="text-align: center; color: #555;">Memuat pesan...</p>
+        <!-- messages go here -->
       </div>
       <form id="forumForm" aria-label="Form kirim pesan chat">
         <input type="text" id="chatMessage" placeholder="Tulis pesan..." required aria-required="true" aria-label="Tulis pesan" />
@@ -731,77 +748,67 @@
     </div>
   </section>
 </main>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
-
 <script>
-  // ======== KONFIGURASI FIREBASE (GANTI DENGAN PUNYA ANDA) ======== //
-  const firebaseConfig = {
-    apiKey: "AIzaSyDxxxxxxxxxxxxxxxxxxxxxx",
-    authDomain: "alumni-tjkt2.firebaseapp.com",
-    projectId: "alumni-tjkt2",
-    storageBucket: "alumni-tjkt2.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:1234567890:web:abc123def456"
-  };
-
-  // Inisialisasi Firebase
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
-  const storage = firebase.storage();
-
-  // ======== SISTEM LOGIN ======== //
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      // Jika user login
-      document.getElementById("loginModal").style.display = "none";
-      document.getElementById("logoutBtn").style.display = "block";
-      
-      // Cek jika admin
-      if (user.email === "admin@example.com") {
-        document.getElementById("tabAddPhotos").style.display = "inline-block";
-        document.getElementById("reunionInfo").style.display = "block";
-      }
-      
-      loadData(); // Muat semua data
+  // Login System
+  const loginModal = document.getElementById('loginModal');
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const loginUsername = document.getElementById('loginUsername');
+  const loginPassword = document.getElementById('loginPassword');
+  
+  // Admin credentials (in a real app, this would be server-side)
+  const ADMIN_USERNAME = 'cyber';
+  const ADMIN_PASSWORD = 'cyber40';
+  
+  let isAdmin = false;
+  
+  function checkAuth() {
+    const username = loginUsername.value.trim();
+    const password = loginPassword.value.trim();
+    
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+      isAdmin = true;
+      loginModal.style.display = 'none';
+      logoutBtn.style.display = 'block';
+      document.getElementById('tabAddPhotos').style.display = 'inline-block';
+      document.getElementById('reunionInfo').style.display = 'block';
+      alert('Login sebagai admin berhasil!');
+    } else if (username === '' && password === '') {
+      // Guest access
+      isAdmin = false;
+      loginModal.style.display = 'none';
+      document.getElementById('tabAddPhotos').style.display = 'none';
+      document.getElementById('reunionInfo').style.display = 'none';
     } else {
-      // Jika belum login
-      document.getElementById("loginModal").style.display = "flex";
-      document.getElementById("logoutBtn").style.display = "none";
+      alert('Username atau password salah!');
+    }
+    
+    // Load data after auth
+    loadInitialData();
+  }
+  
+  loginBtn.addEventListener('click', checkAuth);
+  
+  // Allow Enter key to submit login form
+  loginPassword.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      checkAuth();
     }
   });
-
-  // Fungsi login
-  document.getElementById("loginBtn").addEventListener("click", () => {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-    
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        alert("Login berhasil!");
-      })
-      .catch((error) => {
-        alert("Error: " + error.message);
-      });
+  
+  logoutBtn.addEventListener('click', function() {
+    isAdmin = false;
+    logoutBtn.style.display = 'none';
+    loginModal.style.display = 'flex';
+    loginUsername.value = '';
+    loginPassword.value = '';
+    document.getElementById('tabAddPhotos').style.display = 'none';
+    document.getElementById('reunionInfo').style.display = 'none';
   });
-
-  // Fungsi logout
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    auth.signOut()
-      .then(() => {
-        alert("Anda telah logout");
-      });
-  });
-
-  // ======== NAVIGASI TAB ======== //
+  
+  // Navigation with keyboard support and ARIA
   const tabs = document.querySelectorAll('nav button');
   const sections = document.querySelectorAll('main section');
-  
   function activateTab(tab) {
     tabs.forEach(t => {
       const isActive = (t === tab);
@@ -809,14 +816,12 @@
       t.setAttribute('aria-selected', isActive ? 'true' : 'false');
       t.tabIndex = isActive ? 0 : -1;
     });
-    
     const selectedId = tab.getAttribute('aria-controls');
     sections.forEach(sec => {
       sec.classList.toggle('active', sec.id === selectedId);
       sec.tabIndex = sec.id === selectedId ? 0 : -1;
     });
   }
-
   tabs.forEach(tab => {
     tab.addEventListener('click', () => activateTab(tab));
     tab.addEventListener('keydown', e => {
@@ -838,203 +843,143 @@
     });
   });
 
-  // ======== FUNGSI UTAMA ======== //
-  function loadData() {
-    loadAlumni();
+  // Data Management Functions
+  function loadInitialData() {
     loadReunionInfo();
-    loadGallery();
-    loadMessages();
+    renderGallery();
+    renderMessages();
   }
 
-  // 1. FUNGSI ALUMNI
-  function loadAlumni() {
-    const alumniProfilesDiv = document.getElementById("alumniProfiles");
-    alumniProfilesDiv.innerHTML = "<p style='text-align: center; color: #555;'>Memuat data alumni...</p>";
-    
-    db.collection("alumni").get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          alumniProfilesDiv.innerHTML = "<p style='text-align: center; color: #555;'>Belum ada data alumni.</p>";
-          return;
-        }
-        
-        alumniProfilesDiv.innerHTML = "";
-        querySnapshot.forEach((doc) => {
-          const alumni = doc.data();
-          alumniProfilesDiv.innerHTML += `
-            <div class="profile-card">
-              <img src="${alumni.photo || 'https://i.pravatar.cc/150?u=' + alumni.email}" alt="${alumni.name}" />
-              <h3>${alumni.name}</h3>
-              <p><strong>Email:</strong> ${alumni.email}</p>
-              <p><strong>Telepon:</strong> ${alumni.phone || '-'}</p>
-            </div>
-          `;
-        });
-      })
-      .catch((error) => {
-        alumniProfilesDiv.innerHTML = `<p style='text-align: center; color: red;'>Error: ${error.message}</p>`;
-      });
-  }
-
-  // 2. FUNGSI REUNI
+  // Reunion Info
+  const reunionTextarea = document.getElementById('reunionTextarea');
+  const saveReunionBtn = document.getElementById('saveReunionBtn');
+  const reunionDisplay = document.getElementById('reunionDisplay');
   function loadReunionInfo() {
-    db.collection("reuni").doc("info").get()
-      .then((doc) => {
-        if (doc.exists) {
-          document.getElementById("reunionDisplay").textContent = doc.data().text;
-          document.getElementById("reunionTextarea").value = doc.data().text;
-        } else {
-          document.getElementById("reunionDisplay").textContent = "Belum ada informasi reuni.";
-        }
-      });
+    const info = localStorage.getItem('reunionInfo') || '';
+    reunionTextarea.value = info;
+    reunionDisplay.textContent = info || 'Belum ada informasi reuni saat ini.';
   }
-
-  document.getElementById("saveReunionBtn").addEventListener("click", (e) => {
-    e.preventDefault();
-    const info = document.getElementById("reunionTextarea").value;
-    
-    db.collection("reuni").doc("info").set({
-      text: info,
-      lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
-      alert("Informasi reuni berhasil disimpan!");
-      loadReunionInfo();
-    })
-    .catch((error) => {
-      alert("Error: " + error.message);
-    });
+  saveReunionBtn.addEventListener('click', () => {
+    if (!isAdmin) {
+      alert('Hanya admin yang dapat mengubah informasi reuni!');
+      return;
+    }
+    localStorage.setItem('reunionInfo', reunionTextarea.value.trim());
+    loadReunionInfo();
+    alert('Informasi reuni berhasil disimpan!');
   });
 
-  // 3. FUNGSI GALERI
-  function loadGallery() {
-    const galleryContent = document.getElementById("galleryContent");
-    galleryContent.innerHTML = "<p style='text-align: center; color: #555;'>Memuat galeri...</p>";
-    
-    db.collection("gallery").orderBy("timestamp", "desc").get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          galleryContent.innerHTML = "<p style='text-align: center; color: #555;'>Galeri masih kosong.</p>";
-          return;
-        }
-        
-        galleryContent.innerHTML = "";
-        querySnapshot.forEach((doc) => {
-          const item = doc.data();
-          galleryContent.innerHTML += `
-            <div class="gallery-item">
-              <img src="${item.imageUrl}" alt="Galeri item" loading="lazy" />
-            </div>
-          `;
-        });
-      });
+  // Gallery Loading and Rendering
+  const galleryContent = document.getElementById('galleryContent');
+  let gallery = JSON.parse(localStorage.getItem('galleryItems') || '[]');
+  function renderGallery() {
+    galleryContent.innerHTML = '';
+    if (gallery.length === 0) {
+      galleryContent.innerHTML = '<p style="color:#555; font-style: italic; text-align:center;">Galeri masih kosong. Silakan tambahkan foto.</p>';
+      return;
+    }
+    gallery.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+      if(item.type === 'image') {
+        div.innerHTML = `<img src="${item.data}" alt="Foto galeri ${idx+1}" loading="lazy" />`;
+      } else if(item.type === 'video') {
+        div.innerHTML = `<video controls src="${item.data}" aria-label="Video galeri ${idx+1}"></video>`;
+      }
+      galleryContent.appendChild(div);
+    });
   }
 
-  // 4. FUNGSI UPLOAD FOTO
-  document.getElementById("uploadPhotosBtn").addEventListener("click", () => {
-    const files = document.getElementById("photoUpload").files;
+  // Photo Upload
+  const photoUpload = document.getElementById('photoUpload');
+  const uploadPhotosBtn = document.getElementById('uploadPhotosBtn');
+  uploadPhotosBtn.addEventListener('click', () => {
+    if (!isAdmin) {
+      alert('Hanya admin yang dapat menambahkan foto!');
+      return;
+    }
+    
+    const files = photoUpload.files;
     if (files.length === 0) {
-      alert("Pilih file terlebih dahulu!");
+      alert('Pilih minimal satu file foto.');
       return;
     }
-    
-    Array.from(files).forEach((file) => {
-      const storageRef = storage.ref(`gallery/${file.name}`);
-      const uploadTask = storageRef.put(file);
-      
-      uploadTask.on('state_changed', 
-        (snapshot) => {
-          // Progress monitoring
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload progress: ' + progress + '%');
-        },
-        (error) => {
-          alert("Upload error: " + error.message);
-        },
-        () => {
-          // Upload complete
-          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-            db.collection("gallery").add({
-              imageUrl: downloadURL,
-              timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then(() => {
-              alert("Foto berhasil diupload!");
-              loadGallery();
-            });
-          });
+    let uploadCount = 0;
+    Array.from(files).forEach(file => {
+      if (!file.type.startsWith('image/')) {
+        alert('File yang diupload harus berupa gambar.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = e => {
+        gallery.push({type: 'image', data: e.target.result});
+        uploadCount++;
+        if (uploadCount === files.length) {
+          localStorage.setItem('galleryItems', JSON.stringify(gallery));
+          renderGallery();
+          alert('Foto berhasil diupload dan tersimpan!');
+          photoUpload.value = '';
         }
-      );
+      };
+      reader.readAsDataURL(file);
     });
   });
 
-  // 5. FUNGSI FORUM CHAT
-  function loadMessages() {
-    const messagesDiv = document.getElementById("messages");
-    messagesDiv.innerHTML = "<p style='text-align: center; color: #555;'>Memuat pesan...</p>";
-    
-    db.collection("forum")
-      .orderBy("timestamp", "asc")
-      .onSnapshot((querySnapshot) => {
-        if (querySnapshot.empty) {
-          messagesDiv.innerHTML = "<p style='text-align: center; color: #555;'>Belum ada pesan.</p>";
-          return;
-        }
-        
-        messagesDiv.innerHTML = "";
-        querySnapshot.forEach((doc) => {
-          const msg = doc.data();
-          const time = msg.timestamp.toDate().toLocaleString('id-ID');
-          
-          messagesDiv.innerHTML += `
-            <div class="message" data-id="${doc.id}">
-              <strong>${msg.senderName || "Anonim"}</strong>
-              <p>${msg.text}</p>
-              <small>${time}</small>
-              ${auth.currentUser && auth.currentUser.email === "admin@example.com" ? 
-                `<button class="delete-message">×</button>` : ''}
-            </div>
-          `;
-        });
-        
-        // Scroll ke bawah
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        
-        // Tambahkan event listener untuk delete
-        document.querySelectorAll('.delete-message').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const messageId = e.target.closest('.message').getAttribute('data-id');
-            if (confirm("Hapus pesan ini?")) {
-              db.collection("forum").doc(messageId).delete()
-                .then(() => {
-                  alert("Pesan berhasil dihapus!");
-                })
-                .catch((error) => {
-                  alert("Error: " + error.message);
-                });
-            }
-          });
-        });
-      });
+  // Forum Chat
+  const messagesDiv = document.getElementById('messages');
+  const forumForm = document.getElementById('forumForm');
+  const chatMessage = document.getElementById('chatMessage');
+  let chatMessages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
-  // Kirim pesan baru
-  document.getElementById("forumForm").addEventListener("submit", (e) => {
+  function renderMessages() {
+    messagesDiv.innerHTML = '';
+    if (chatMessages.length === 0) {
+      messagesDiv.innerHTML = '<p style="color:#555; font-style: italic; text-align:center;">Belum ada pesan di forum grup.</p>';
+      return;
+    }
+    chatMessages.forEach((msg, index) => {
+      const div = document.createElement('div');
+      div.className = 'message';
+      const time = new Date(msg.timestamp).toLocaleString('id-ID', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+      div.innerHTML = `
+        ${escapeHtml(msg.message)} 
+        <small>${time}</small>
+        ${isAdmin ? `<button class="delete-message" data-index="${index}">×</button>` : ''}
+      `;
+      messagesDiv.appendChild(div);
+    });
+    
+    // Add event listeners to delete buttons
+    document.querySelectorAll('.delete-message').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        chatMessages.splice(index, 1);
+        localStorage.setItem('forumMessages', JSON.stringify(chatMessages));
+        renderMessages();
+      });
+    });
+    
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  forumForm.addEventListener('submit', e => {
     e.preventDefault();
-    const messageText = document.getElementById("chatMessage").value.trim();
-    
-    if (!messageText) {
-      alert("Pesan tidak boleh kosong!");
+    const message = chatMessage.value.trim();
+    if (!message) {
+      alert('Pesan tidak boleh kosong!');
       return;
     }
     
-    const user = auth.currentUser;
-    if (!user) {
-      alert("Anda harus login untuk mengirim pesan!");
-      return;
-    }
-    
-    // Tampilkan indikator mengetik
+    // Show typing indicator
     const typingDiv = document.createElement('div');
     typingDiv.className = 'typing-indicator';
     typingDiv.innerHTML = `
@@ -1042,27 +987,20 @@
       <div class="typing-dot"></div>
       <div class="typing-dot"></div>
     `;
-    document.getElementById("messages").appendChild(typingDiv);
-    document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+    messagesDiv.appendChild(typingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
     
-    // Simpan pesan ke database
-    db.collection("forum").add({
-      text: messageText,
-      senderId: user.uid,
-      senderName: user.email.split('@')[0],
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
-      document.getElementById("chatMessage").value = "";
-    })
-    .catch((error) => {
-      alert("Error: " + error.message);
-    });
+    // Simulate slight delay before message appears
+    setTimeout(() => {
+      chatMessages.push({
+        message,
+        timestamp: Date.now()
+      });
+      localStorage.setItem('forumMessages', JSON.stringify(chatMessages));
+      chatMessage.value = '';
+      renderMessages();
+    }, 500 + Math.random() * 1000);
   });
-
-  // ======== INISIALISASI ======== //
-  // Aktifkan tab pertama
-  activateTab(document.getElementById('tabHome'));
 </script>
 </body>
 </html>
